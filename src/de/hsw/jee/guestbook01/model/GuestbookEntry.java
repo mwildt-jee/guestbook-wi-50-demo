@@ -1,26 +1,28 @@
-package de.hsw.jee.guestbook01;
+package de.hsw.jee.guestbook01.model;
 
 import java.util.Date;
 
 public class GuestbookEntry{
 	
-	private String username;
+	private User user;
 	private String title;
 	private String message;
 	private Date dateCreated;
 	
-	public GuestbookEntry(String username, String title, String message) {
-		this.username = username;
+	public GuestbookEntry(User user, String title, String message) {
+		this.user = user;
 		this.title = title;
 		this.message = message;
 	}
 	
-	public String getUsername() {
-		return username;
+	public User getUser() {
+		return user;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 	public String getTitle() {
 		return title;
 	}
