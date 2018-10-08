@@ -1,6 +1,8 @@
 package de.hsw.jee.guestbook01.presentation;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import de.hsw.jee.guestbook01.model.GuestbookEntry;
 import de.hsw.jee.guestbook01.model.User;
 import de.hsw.jee.guestbook01.services.GuestbookService;
-import de.hsw.jee.guestbook01.services.Services;
+
 
 /**
  * Servlet implementation class GuestbookServlet
@@ -18,7 +20,9 @@ import de.hsw.jee.guestbook01.services.Services;
 @WebServlet("/")
 public class GuestbookServlet extends HttpServlet {
        
-	private GuestbookService guestbookService = Services.getGuestbookService();	
+	@EJB private GuestbookService guestbookService;
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		guestbookService.insert(

@@ -3,6 +3,7 @@ package de.hsw.jee.guestbook01.presentation;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.hsw.jee.guestbook01.model.User;
-import de.hsw.jee.guestbook01.services.Services;
 import de.hsw.jee.guestbook01.services.UserService;
 
 /**
@@ -21,7 +21,7 @@ public class AuthServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
-	private final UserService userService = Services.getUserService();
+	@EJB private UserService userService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final String form = "<html><head></head><body>"
